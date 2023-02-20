@@ -1,0 +1,20 @@
+.labeles{
+    color: black;
+    display: inline-block;
+    text-shadow: 2px 2px 3px white;
+    font-size: 20px;
+}
+.forms{
+    position: relative;
+    top: 12em;
+    left: 40em;
+    border: 2px solid green;
+    background-color: rgba(55, 202, 255, 0.758);
+    width: 30%;
+    height: 20em;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
