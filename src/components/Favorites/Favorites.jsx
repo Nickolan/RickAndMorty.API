@@ -1,9 +1,33 @@
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import { filterCards, orderCards } from "../../redux/action";
 import Card from "../Card";
 function Favorites(props){
+
+    const dispatch = useDispatch();
+    const handlerOrder = (event) => {
+        dispatch(orderCards(event.target.value))
+    }
+
+    const handleFilter = (event) => {
+        dispatch(filterCards(event.target.value))
+    }
+
     return (
         <div>
-            Favorites
+            <div>
+                <select onClick={handlerOrder} >
+                    <option value="order" disabled='disabled'>Order By</option>
+                    <option value="Ascendente">Ascendente</option>
+                    <option value="Descendente">Descendente</option>
+                </select>
+                <select onClick={handleFilter}>
+                    <option value="filter" disabled='disabled'>Filter By</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Genderless">Genderless</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
             {
             props.myFavorites.map(elem => <Card 
             name={elem.name} 
