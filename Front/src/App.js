@@ -28,7 +28,7 @@ function App () {
   }
 
   const onSearch = (character) => {
-    fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
+    fetch(`http://localhost:3001/onsearch/${character}` )
       .then((response) => response.json())
       .then((data) => {
          if (data.name) {
@@ -57,7 +57,7 @@ function App () {
           <Route path='/favorites' element={<Favorites/>}/>
           <Route path='/about' element={<About/>} />
           <Route path='/home' element={<Cards characters={characters} onClose = {onClose}/>}/>
-          <Route path='detail/:detailId' element={<Detail/>}/>
+          <Route path='/detail/:detailId' element={<Detail/>}/>
           {/* <Route path='*' element={<Error/>} /> */}
         </Routes>
     </div>

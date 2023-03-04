@@ -8,6 +8,7 @@
     margin-bottom: 5px;
     align-items: center;
     padding-right: 1em;
+    position: fixed;
 }
 .links{
     width: 5em;

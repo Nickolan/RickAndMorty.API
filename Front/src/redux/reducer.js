@@ -2,7 +2,8 @@ import { ADD_CHARACTER, REMOVE_CHARACTER, FILTER, ORDER } from "./action-type"
 
 const initialState = {
     myFavorites: [],
-    allCharacters: []
+    allCharacters: [],
+    errors: {}
 }
 const rootReducer = (state = initialState, action) =>{
     switch (action.type) {
@@ -10,13 +11,15 @@ const rootReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 myFavorites: [...state.allCharacters, action.payload],
-                allCharacters: [...state.allCharacters, action.payload]
+                allCharacters: [...state.allCharacters, action.payload],
+                errors: {}
             };
     
         case REMOVE_CHARACTER:
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter((elem) => elem.id !== action.payload)
+                myFavorites: state.myFavorites.filter((elem) => elem.id !== action.payload),
+                errors: {}
             };
 
         case FILTER:
@@ -34,6 +37,20 @@ const rootReducer = (state = initialState, action) =>{
                         : action.payload === 'Descendente' ? state.allCharacters.sort((a, b) => b.id - a.id)
                         : null
             }
+
+        case "GET_FAVS":
+            return {
+                ...state,
+                myFavorites: action.payload,
+                errors: {}
+            }
+
+        case "ERROR":
+            return {
+                ...state,
+                errors: action.payload
+            };
+
 
         default:
             return {...state};

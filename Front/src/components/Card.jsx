@@ -31,9 +31,9 @@ function Card({name, species, gender, image, onClose, id, addFavorite, removeFav
       
       <div className={style.card}>
          {isFav ? (
-            <button onClick={handleFavorite}>❤️</button>
+            <button className={style.favButton} onClick={handleFavorite}>❤️</button>
          ) : (
-            <button onClick={handleFavorite}>🤍</button>
+            <button className={style.favButton} onClick={handleFavorite}>🤍</button>
          )}
 
 

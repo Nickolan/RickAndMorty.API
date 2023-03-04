@@ -1,5 +1,6 @@
 import { connect, useDispatch } from "react-redux";
 import { filterCards, orderCards } from "../../redux/action";
+import FavStyles from "./favorites.css"
 import Card from "../Card";
 function Favorites(props){
 
@@ -13,7 +14,7 @@ function Favorites(props){
     }
 
     return (
-        <div>
+        <div className={FavStyles.container}>
             <div>
                 <select onClick={handlerOrder} >
                     <option value="order" disabled='disabled'>Order By</option>

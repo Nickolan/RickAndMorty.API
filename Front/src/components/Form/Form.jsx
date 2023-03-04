@@ -38,18 +38,18 @@ export default function Form({ login }) {
         <form onSubmit={handleSubmit} className={StyleForm.forms}>
             <div>
             <label htmlFor="username" className={StyleForm.labeles}>Username: </label>
-            <input value={userData.username} onChange={handleInputChange} type='text' placeholder="User" name="username"></input>
+            <input className={StyleForm.inputs} value={userData.username} onChange={handleInputChange} type='text' placeholder="User" name="username"></input>
             <p>{errors.username}</p>
             </div>
             
             <div>
             <label htmlFor="password" className={StyleForm.labeles}>Password: </label>
-            <input value={userData.password} onChange={handleInputChange} type='password' placeholder="password" name='password'></input>
+            <input className={StyleForm.inputs} value={userData.password} onChange={handleInputChange} type='password' placeholder="password" name='password'></input>
             <p>{errors.password}</p>
             </div>
             
 
-            <button type="submit">LOGIN</button>
+            <button className={StyleForm.button} type="submit">Login</button>
         </form>
        
     )

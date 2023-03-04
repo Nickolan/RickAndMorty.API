@@ -1,15 +1,15 @@
-const http = require('http');
-const getCharById = require('./controllers/getCharById');
-const getCharDetail = require('./controllers/getCharDetail');
+const express = require("express");
+const server = express();
+const cors = require("cors");
+const PORT = 3001;
+const router = require("./routes/index");
+const morgan = require("morgan");
 
-http.createServer((req, res)=> {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    let id = req.url.split('/').at(-1);
+server.use(cors()); // habilito a todos a hacer solicitudes a mi servidor
+server.use(express.json()); // para que funcinoe mi sv con formato JSON
+server.use(morgan("dev")); // 
+server.use("/", router);
 
-    if (req.url.includes("onsearch")) {
-        getCharById(res, id)
-    }
-    if (req.url.includes("detail")){
-        getCharDetail(res, id)
-    }
-}).listen(3001, 'localhost')
+server.listen(PORT, () => {
+  console.log("Server raised in port " + PORT);
+});
