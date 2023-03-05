@@ -5,7 +5,7 @@ export function addFavorite (character) {
     return async function (dispatch) {
 
       try {
-        const responseBack = await axios.post("http://localhost:3001/fav", character)
+        const responseBack = await axios.post("http://localhost:3001/favs/create", character)
       return dispatch({
         type: ADD_CHARACTER,
         payload: responseBack.data
@@ -32,28 +32,11 @@ export  function removeFavorite (id) {
     return async function (dispatch) {
 
       try {
-        const response = await axios.delete("http://localhost:3001/fav" + id)
-      return dispatch({
-        type: REMOVE_CHARACTER,
-        payload: response.data
-      })
+        const response = await axios.delete("http://localhost:3001/favs/delete/" + id)
+      return dispatch({ type: REMOVE_CHARACTER, payload: response.data })
       } catch (error) {
         return dispatch({type: "ERROR", payload: error})
       }
-
-      
-
-      
-      // try {
-      //   axios.delete("http://localhost:3001/rickandmorty/fav" + id).then((response) => {
-      //     return dispatch({
-      //       type: REMOVE_CHARACTER,
-      //       payload: response.data,
-      //     });
-      //   });
-      // } catch (error) {
-        
-      // }
     };
 }
 
@@ -75,7 +58,7 @@ export function getFavorites(){
   return async function (dispatch){
 
     try {
-       const response = await axios('http://localhost:3001/fav')
+       const response = await axios('http://localhost:3001/favs/get')
       return dispatch({type: "GET_FAVS", payload: response.data})
     } catch (error) {
       return dispatch({type: "ERROR", payload: error})
